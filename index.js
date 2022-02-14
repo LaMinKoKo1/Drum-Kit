@@ -7,6 +7,7 @@ for( var i = 0 ; i < numberOfDrums ; i++) {
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
     innerHTML = this.innerHTML
     makeSound(innerHTML)
+    animation(innerHTML)
   })
 }
 
@@ -14,6 +15,7 @@ for( var i = 0 ; i < numberOfDrums ; i++) {
 
 document.addEventListener("keydown", function(event) {
   makeSound(event.key)
+  animation(event.key)
 })
 
 
@@ -60,3 +62,18 @@ function makeSound(input) {
 
   }
 }
+
+
+// Animation effect
+
+
+function animation(input) {
+  var toAnimate = document.querySelector("." + input);
+
+  toAnimate.classList.add("pressed") ;
+
+  setTimeout(function() {
+    toAnimate.classList.remove("pressed") ;
+  }, 100)
+}
+
